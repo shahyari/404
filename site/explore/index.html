@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- @include head -->
+  <title>Explore — {{siteName}}</title>
+  <meta name="description" content="Browse and search all {{countLabel}} in the {{siteName}} playground.">
+  <link rel="canonical" href="{{siteUrl}}/explore/">
+  <meta property="og:title" content="Explore — {{siteName}}">
+  <meta property="og:description" content="Browse and search all {{countLabel}} in the {{siteName}} playground.">
+  <meta property="og:url" content="{{siteUrl}}/explore/">
+  <meta property="og:image" content="{{siteUrl}}/og.png">
+  <script type="module" src="/scripts/explore.js"></script>
+</head>
+<body>
+  <!-- @include header -->
+
+  <main id="main" class="container">
+    <header class="page-head">
+      <h1 class="page-title">Explore</h1>
+      <p class="muted">All {{countLabel}}. Search by name, description, tag, category or author.</p>
+    </header>
+
+    <!-- Search and filters need JavaScript; they stay hidden until it runs. -->
+    <form class="search" role="search" action="/explore/" data-search-form hidden>
+      <label class="visually-hidden" for="search">Search experiences</label>
+      <!-- @icon magnifying-glass -->
+      <input id="search" name="q" type="search" placeholder="Search experiences…"
+             autocomplete="off" autocapitalize="off" spellcheck="false"
+             aria-controls="results" aria-describedby="results-status">
+      <kbd>/</kbd>
+    </form>
+
+    <div class="filters" role="group" aria-label="Filters" data-filters hidden></div>
+    <template data-tag-chip>
+      <button class="chip chip-active" type="button" data-tag-chip-button><span data-label></span><!-- @icon x --></button>
+    </template>
+
+    <div class="explore-results">
+      <p class="results-status muted" id="results-status" role="status" aria-live="polite"></p>
+
+      <ul class="cards" id="results" aria-label="Experiences">
+        <!-- @cards -->
+      </ul>
+
+      <div class="empty" data-empty hidden>
+        <p>Nothing here. Which is a little ironic.</p>
+        <p class="muted" data-empty-message></p>
+        <button class="button" type="button" data-clear>Clear search and filters</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- @include footer -->
+</body>
+</html>

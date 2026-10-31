@@ -1,0 +1,91 @@
+:root {
+  --paper: #f3efe6;
+  --ink: #1c1b19;
+  --faint: #6b665c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161512;
+    --ink: #ece7dc;
+    --faint: #8f897c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  text-align: center;
+}
+
+h1 {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 0 0 1.5rem;
+  font-size: clamp(6rem, 28vw, 16rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* The missing zero: an empty slot where a character should be. */
+.gap {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.04em;
+  margin: 0 0.06em;
+  background: var(--faint);
+  animation: blink 1.4s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+p {
+  max-width: 28rem;
+  margin: 0 auto 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--faint);
+}
+
+.lead {
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+a {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--ink);
+  font-style: italic;
+  text-underline-offset: 0.25em;
+}
+
+a:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gap {
+    animation: none;
+  }
+}

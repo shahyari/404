@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- @include head -->
+  <title>About — {{siteName}}</title>
+  <meta name="description" content="What {{siteName}} is, how it works, and how to contribute your own 404 experience.">
+  <link rel="canonical" href="{{siteUrl}}/about/">
+  <meta property="og:title" content="About — {{siteName}}">
+  <meta property="og:description" content="What {{siteName}} is, how it works, and how to contribute your own 404 experience.">
+  <meta property="og:url" content="{{siteUrl}}/about/">
+  <meta property="og:image" content="{{siteUrl}}/og.png">
+</head>
+<body>
+  <!-- @include header -->
+
+  <main id="main" class="container">
+    <header class="page-head">
+      <h1 class="page-title">About</h1>
+    </header>
+
+    <div class="prose">
+      <p>
+        {{siteName}} is an open-source collection of creative and experimental takes on the
+        most common dead end on the web: the “page not found” screen.
+      </p>
+      <p>
+        Some are a single line of type. Some are animations, toys, or tiny games.
+        They have one thing in common: you arrived somewhere that doesn’t exist,
+        and it turned out to be worth a moment.
+      </p>
+
+      <h2>How it works</h2>
+      <p>
+        Every experience is a standalone web page with its own HTML, CSS and JavaScript.
+        It runs inside an isolated, sandboxed frame. It can look and behave however it likes,
+        and it cannot affect this website or any other experience.
+      </p>
+      <p>
+        There is no backend, no tracking and no analytics. Everything runs in your browser.
+      </p>
+
+      <h2>Use them</h2>
+      <p>
+        Every experience can be reused for free on your own site. Unless an experience says
+        otherwise, it is released under the MIT License. Its author and license are listed with it.
+      </p>
+
+      <h2>Contribute</h2>
+      <p>
+        Have an idea for a 404 page? Copy the template, build your experience in plain HTML, CSS
+        and JavaScript, and open a pull request. You don’t need to know how the rest of
+        the site works.
+      </p>
+      <p><a href="{{repoUrl}}/blob/main/CONTRIBUTING.md">Read the contribution guide on GitHub</a></p>
+
+      <h2>Contributors</h2>
+      <ul class="credits">
+        <!-- @credits -->
+      </ul>
+    </div>
+  </main>
+
+  <!-- @include footer -->
+</body>
+</html>

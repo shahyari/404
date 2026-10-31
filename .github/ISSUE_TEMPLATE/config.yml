@@ -1,0 +1,7 @@
+# Blank issues stay enabled: the "Report a problem" link in each experience's
+# info panel opens a pre-filled issue without a template.
+blank_issues_enabled: true
+contact_links:
+  - name: Security problem
+    url: https://github.com/shahyari/404/security/advisories/new
+    about: Report a way around the sandbox or another vulnerability privately.

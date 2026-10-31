@@ -1,0 +1,25 @@
+{
+  "name": "404-pages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A playground of creative and experimental 404 page experiences.",
+  "homepage": "https://404.shahyari.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahyari/404.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node build/registry.js"
+  },
+  "devDependencies": {
+    "vite": "^6.4.5"
+  }
+}

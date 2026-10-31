@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <section class="footer-brand" aria-label="About this project">
+      <a class="footer-logo" href="{{creatorUrl}}" aria-label="shahyari.com"><!-- @include logo.svg --></a>
+      <p class="footer-name">{{siteName}}</p>
+      <p class="muted">{{siteDescription}}</p>
+    </section>
+
+    <nav aria-labelledby="footer-nav-heading">
+      <h2 class="footer-heading" id="footer-nav-heading">Navigate</h2>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/explore/">Explore</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="{{repoUrl}}" rel="noopener"><!-- @icon github-logo -->GitHub</a></li>
+      </ul>
+    </nav>
+
+    <section class="footer-support" aria-labelledby="footer-support-heading">
+      <h2 class="footer-heading" id="footer-support-heading">Support</h2>
+      <p class="muted">Free, open source and ad-free. If something here made you smile, star the project on GitHub. It helps other people find it.</p>
+      <a class="button button-star" href="{{repoUrl}}" rel="noopener" target="_blank"><!-- @icon star -->Star on GitHub</a>
+    </section>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© <span data-year>{{year}}</span> <a href="{{creatorUrl}}">{{creatorName}}</a>. Code released under the MIT License.</p>
+    <p>Each experience belongs to its author and is credited on its page.</p>
+  </div>
+</footer>

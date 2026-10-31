@@ -1,0 +1,9 @@
+{
+  "title": "Your Experience Title",
+  "description": "One or two sentences about your 404 page.",
+  "category": "minimal",
+  "tags": ["your", "tags"],
+  "interaction": ["passive"],
+  "author": { "name": "Your Name", "url": "https://your-site.example" },
+  "date": "2026-01-01"
+}

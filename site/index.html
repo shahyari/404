@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- @include head -->
+  <title>{{siteName}} — a playground of creative 404 experiences</title>
+  <meta name="description" content="{{siteDescription}}">
+  <link rel="canonical" href="{{siteUrl}}/">
+  <meta property="og:title" content="{{siteName}}">
+  <meta property="og:description" content="{{siteDescription}}">
+  <meta property="og:url" content="{{siteUrl}}/">
+  <meta property="og:image" content="{{siteUrl}}/og.png">
+</head>
+<body>
+  <!-- @include header -->
+
+  <main id="main">
+    <section class="container hero" aria-labelledby="hero-title">
+      <p class="hero-eyebrow">HTTP 404 · Not Found · {{countLabel}} and counting</p>
+      <h1 class="hero-title" id="hero-title">{{siteName}}</h1>
+      <p class="hero-lede">
+        A playground of creative and experimental “page not found” experiences.
+        Each one is a small, self-contained world: typographic, animated, interactive or playable.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/explore/" data-shuffle><!-- @icon shuffle -->Shuffle</a>
+        <a class="button" href="/explore/">Browse all {{countLabel}}<!-- @icon arrow-right --></a>
+      </div>
+      <p class="hero-hint muted">Press <kbd>/</kbd> to search.</p>
+    </section>
+
+    <section class="container section" aria-labelledby="recent-title">
+      <div class="section-head">
+        <h2 class="section-title" id="recent-title">Recently added</h2>
+        <a class="button button-quiet" href="/explore/">View all</a>
+      </div>
+      <ul class="cards">
+        <!-- @cards 3 h3 -->
+      </ul>
+    </section>
+  </main>
+
+  <!-- @include footer -->
+</body>
+</html>

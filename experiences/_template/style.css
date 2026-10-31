@@ -1,0 +1,28 @@
+/* Everything here applies only to your experience. */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+
+/* Please keep this: some visitors get motion sickness from animation. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

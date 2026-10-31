@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <style>
+    .mark { fill: #000; }
+    @media (prefers-color-scheme: dark) { .mark { fill: #fff; } }
+  </style>
+  <path class="mark" d="M450 450C339.543 450 250 360.457 250 250C250 139.543 339.543 50 450 50V450Z"/>
+  <path class="mark" d="M50 450C160.457 450 250 360.457 250 250C250 139.543 160.457 50 50 50V450Z"/>
+</svg>

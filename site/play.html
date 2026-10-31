@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    Experience shell. Built once, then copied by build/experiences.js to
+    /<id>/index.html for every experience and to /404.html. The
+    {{experience…}} tokens are filled in per copy.
+  -->
+  <!-- @include head -->
+  <!-- The experience frame may only load pages from this site. -->
+  <meta http-equiv="Content-Security-Policy" content="frame-src 'self'">
+  <script>
+    try {
+      if (localStorage.getItem('404:bar') === 'hidden') document.documentElement.dataset.bar = 'hidden';
+    } catch {}
+  </script>
+  <title>{{experienceTitle}} — {{siteName}}</title>
+  <meta name="description" content="{{experienceDescription}}">
+  <meta name="robots" content="{{experienceRobots}}">
+  <link rel="canonical" href="{{experienceUrl}}">
+  <meta property="og:title" content="{{experienceTitle}}">
+  <meta property="og:description" content="{{experienceDescription}}">
+  <meta property="og:url" content="{{experienceUrl}}">
+  <meta property="og:image" content="{{experienceImage}}">
+  <link rel="stylesheet" href="/styles/shell.css">
+  <script type="module" src="/scripts/play.js"></script>
+</head>
+<body class="shell" data-mode="{{experienceMode}}" data-experience="{{experienceId}}" data-repo="{{repoUrl}}">
+  <a class="skip-link" href="#experience-frame">Skip to experience</a>
+
+  <header class="shell-bar">
+    <a class="shell-brand" href="/">{{siteName}}</a>
+    <a class="shell-button" href="/explore/">
+      <!-- @icon arrow-left --><span class="shell-label">Explore</span>
+    </a>
+
+    <h1 class="shell-title">
+      <span data-title>{{experienceTitle}}</span>
+      <span class="shell-byline" data-byline>{{experienceByline}}</span>
+    </h1>
+
+    <nav class="shell-nav" aria-label="Experiences">
+      <a class="shell-button" href="{{experiencePrevUrl}}" data-prev aria-label="Previous: {{experiencePrevTitle}}">
+        <!-- @icon caret-left --><span class="shell-label" aria-hidden="true">Prev</span>
+      </a>
+      <a class="shell-button" href="{{experienceNextUrl}}" data-next aria-label="Next: {{experienceNextTitle}}">
+        <span class="shell-label" aria-hidden="true">Next</span><!-- @icon caret-right -->
+      </a>
+      <a class="shell-button" href="/explore/" data-shuffle>
+        <!-- @icon shuffle --><span class="shell-label">Shuffle</span>
+      </a>
+      <button class="shell-button" type="button" aria-expanded="false" aria-controls="shell-info" data-info-toggle hidden>
+        <!-- @icon info --><span class="shell-label">Info</span>
+      </button>
+      <button class="shell-button" type="button" data-bar-hide hidden>
+        <!-- @icon caret-up --><span class="shell-label">Hide</span>
+      </button>
+    </nav>
+  </header>
+
+  <p class="shell-banner" data-not-found-banner hidden>
+    <span>There’s no page at <code data-missing-path></code>. Here’s a different 404 instead.</span>
+    <button class="shell-button" type="button" aria-label="Dismiss" data-banner-close><!-- @icon x --></button>
+  </p>
+
+  <main class="shell-stage">
+    <iframe
+      id="experience-frame"
+      title="{{experienceTitle}}"
+      src="{{experienceSrc}}"
+      sandbox="{{experienceSandbox}}"
+      allow="{{experienceAllow}}"
+      onload="this.dataset.loaded = ''"></iframe>
+
+    <section class="shell-info" id="shell-info" aria-labelledby="shell-info-title" hidden>
+      <h2 id="shell-info-title" data-info-title></h2>
+      <p class="shell-info-byline" data-info-byline></p>
+      <p data-info-description></p>
+      <dl class="shell-facts" data-info-facts></dl>
+      <ul class="shell-links">
+        <li><a data-info-standalone target="_blank" rel="noopener">Open standalone<!-- @icon arrow-square-out --></a></li>
+        <li><a data-info-source target="_blank" rel="noopener">View source<!-- @icon arrow-square-out --></a></li>
+        <li><a data-info-report target="_blank" rel="noopener">Report a problem<!-- @icon arrow-square-out --></a></li>
+      </ul>
+    </section>
+
+    <div class="shell-notice" data-slow-notice role="alert" hidden>
+      <p>This one is taking a while to load.</p>
+      <div class="shell-notice-actions">
+        <button class="button" type="button" data-retry><!-- @icon arrow-clockwise -->Retry</button>
+        <a class="button" href="/explore/" data-shuffle><!-- @icon shuffle -->Shuffle</a>
+        <a class="button" data-info-standalone target="_blank" rel="noopener">Open standalone</a>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="shell-notice" data-noscript-404>
+        <p>Page not found.</p>
+        <div class="shell-notice-actions"><a class="button" href="/">Go home</a> <a class="button" href="/explore/">Explore</a></div>
+      </div>
+    </noscript>
+  </main>
+
+  <button class="shell-chip" type="button" data-bar-show aria-label="Show navigation">404</button>
+</body>
+</html>

@@ -1,0 +1,30 @@
+name: Experience idea
+description: Suggest a 404 page, or ask for feedback before you build one.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ready to build it yourself? You don't need an issue first. Read [CONTRIBUTING.md](https://github.com/shahyari/404/blob/main/CONTRIBUTING.md) and open a pull request.
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What does the visitor see and do?
+    validations:
+      required: true
+  - type: textarea
+    id: needs
+    attributes:
+      label: Anything it would need
+      description: Saving data, sound, fullscreen, camera, a library… Check docs/PERMISSIONS.md to see what's available.
+  - type: dropdown
+    id: building
+    attributes:
+      label: Will you build it?
+      options:
+        - Yes, I'm planning to
+        - Maybe, with some help
+        - No, it's up for grabs
+    validations:
+      required: true

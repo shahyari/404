@@ -1,0 +1,11 @@
+{
+  "title": "Packet Loss",
+  "description": "The page you asked for got lost in transit. Route the packet through the maze to 200 OK before its hops run out.",
+  "category": "game",
+  "tags": ["maze", "svg", "keyboard", "high-score"],
+  "interaction": ["keyboard", "mouse", "touch"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-10-31",
+  "thumbnail": "thumbnail.webp",
+  "permissions": ["storage"]
+}

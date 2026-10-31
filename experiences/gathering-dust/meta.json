@@ -1,0 +1,10 @@
+{
+  "title": "Gathering Dust",
+  "description": "Thousands of dust particles settle into a 404, until a gust blows them away again. Move your pointer to stir them up.",
+  "category": "animated",
+  "tags": ["canvas", "particles", "generative"],
+  "interaction": ["passive", "mouse", "touch"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-10-31",
+  "thumbnail": "thumbnail.webp"
+}

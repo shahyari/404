@@ -1,0 +1,10 @@
+{
+  "title": "Something Is Missing",
+  "description": "A quiet typographic 404. The page is gone, and so is the zero.",
+  "category": "minimal",
+  "tags": ["typography", "css-only", "serif"],
+  "interaction": ["passive"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-10-31",
+  "thumbnail": "thumbnail.webp"
+}

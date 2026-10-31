@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Packet Loss</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <main>
+    <header class="stats">
+      <h1>Packet Loss</h1>
+      <dl>
+        <div><dt>Level</dt><dd data-level>1</dd></div>
+        <div data-hops-box><dt>Hops left</dt><dd data-hops>–</dd></div>
+        <div><dt>Best</dt><dd data-best>0</dd></div>
+      </dl>
+    </header>
+
+    <svg class="board" data-board role="img" aria-label="Maze"></svg>
+
+    <div class="pad" aria-label="Move" role="group">
+      <button type="button" data-dir="up" aria-label="Up">↑</button>
+      <button type="button" data-dir="left" aria-label="Left">←</button>
+      <button type="button" data-dir="down" aria-label="Down">↓</button>
+      <button type="button" data-dir="right" aria-label="Right">→</button>
+    </div>
+
+    <p class="hint">Arrow keys or WASD. Swipe on touch screens.</p>
+    <p class="visually-hidden" data-announce aria-live="polite"></p>
+
+    <section class="overlay" data-overlay aria-labelledby="overlay-title">
+      <h2 id="overlay-title" data-overlay-title>404: Page not found</h2>
+      <p data-overlay-text>The page you asked for got lost on its way here. Route the packet to <strong>200 OK</strong> before it runs out of hops.</p>
+      <div class="actions">
+        <button type="button" class="primary" data-start autofocus>Route it</button>
+        <button type="button" data-elsewhere hidden>Somewhere else</button>
+        <a href="/" target="_top">Return home</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
