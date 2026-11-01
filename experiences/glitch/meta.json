@@ -1,0 +1,10 @@
+{
+  "title": "Glitch",
+  "description": "A corrupted 404 that glitches on its own. Move fast to break it harder. Your pointer is the light that casts its shadows.",
+  "category": "interactive",
+  "tags": ["glitch", "rgb-split", "shadows", "css-transforms"],
+  "interaction": ["passive", "mouse", "touch"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-11-01",
+  "thumbnail": "thumbnail.webp"
+}

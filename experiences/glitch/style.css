@@ -1,0 +1,130 @@
+:root {
+  --bg: #07070a;
+  --fg: #f4f4f5;
+  --muted: #9a9aa6;
+  --cyan: #22e6ff;
+  --magenta: #ff2e88;
+  --yellow: #ffe14d;
+  --green: #3dff8a;
+  --font: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  /* One-finger drags move the light instead of panning; pinch zoom still works. */
+  touch-action: pinch-zoom;
+}
+
+/* Pixels burned by the pointer, drawn by script.js. */
+.pixels {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+/* All layers share one grid cell, so they stack exactly on top of each other. */
+.stage {
+  display: grid;
+  font: 800 min(34vw, 38vh) / 1 var(--font);
+  letter-spacing: -0.04em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stage > * {
+  grid-area: 1 / 1;
+  text-align: center;
+  white-space: pre;
+}
+
+/* Shadows multiply where they overlap, like ink: magenta over cyan makes blue.
+   The group is isolated so they mix only with each other, never with the
+   dark background (which would turn them black). */
+.shadows {
+  display: grid;
+  isolation: isolate;
+}
+
+.shadow {
+  grid-area: 1 / 1;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.word {
+  will-change: transform;
+}
+
+.slice {
+  visibility: hidden;
+  mix-blend-mode: screen;
+}
+
+.slice-cyan {
+  color: var(--cyan);
+}
+
+.slice-magenta {
+  color: var(--magenta);
+}
+
+.glitching .slice {
+  visibility: visible;
+}
+
+footer {
+  position: fixed;
+  inset: auto 0 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1.5rem 2rem;
+  font-size: 0.875rem;
+}
+
+footer p {
+  margin: 0;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: pre;
+}
+
+a {
+  color: var(--fg);
+  text-underline-offset: 0.25em;
+}
+
+a:focus-visible {
+  outline: 1px solid var(--cyan);
+  outline-offset: 4px;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Glitch</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <canvas class="pixels" aria-hidden="true"></canvas>
+  <main>
+    <h1 class="visually-hidden">404: Page not found</h1>
+
+    <!-- Shadow layers are added by script.js, behind the word. -->
+    <div class="stage" aria-hidden="true">
+      <span class="word">404</span>
+      <span class="slice slice-cyan">404</span>
+      <span class="slice slice-magenta">404</span>
+    </div>
+
+    <footer>
+      <p aria-hidden="true" data-corrupt>ERR_PAGE_NOT_FOUND</p>
+      <a href="/" target="_top">Return home</a>
+    </footer>
+  </main>
+</body>
+</html>
