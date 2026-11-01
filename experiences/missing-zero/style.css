@@ -54,6 +54,22 @@ h1 {
   animation: blink 1.4s steps(1) infinite;
 }
 
+/* The zero, shown only while the 0 key is held. It takes exactly the gap's
+   space (0.5em + margins), so nothing moves when they swap. */
+.zero {
+  display: none;
+  width: 0.62em;
+  text-align: center;
+}
+
+.found .gap {
+  display: none;
+}
+
+.found .zero {
+  display: inline-block;
+}
+
 @keyframes blink {
   50% { opacity: 0; }
 }

@@ -54,7 +54,7 @@ If you need to save data between visits, go fullscreen, or use game controllers 
 
 | Experience | Shows |
 |---|---|
-| [minimal-404](experiences/minimal-404/) | HTML and CSS only |
+| [missing-zero](experiences/missing-zero/) | HTML and CSS, plus a few lines of JavaScript for a keyboard easter egg |
 | [gathering-dust](experiences/gathering-dust/) | Canvas animation, pointer input, reduced motion |
 | [packet-loss](experiences/packet-loss/) | A game split into ES modules, keyboard and touch input, saved high score, navigating from inside |
 

@@ -1,0 +1,10 @@
+{
+  "title": "Missing Zero",
+  "description": "A quiet typographic 404. The page is gone, and so is the zero. Hold the 0 key to put it back.",
+  "category": "minimal",
+  "tags": ["typography", "serif", "easter-egg"],
+  "interaction": ["passive", "keyboard"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-10-31",
+  "thumbnail": "thumbnail.webp"
+}

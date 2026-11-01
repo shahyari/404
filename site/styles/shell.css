@@ -3,6 +3,12 @@
  * The bar sits outside the frame, so it never covers or intercepts the experience.
  */
 
+/* The shell never scrolls, so give the frame the full width.
+   (This file is only loaded on shell pages.) */
+html {
+  scrollbar-gutter: auto;
+}
+
 .shell {
   height: 100vh;
   height: 100dvh;

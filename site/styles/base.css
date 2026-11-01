@@ -9,6 +9,9 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Always reserve room for a classic scrollbar, so the layout doesn't shift
+     sideways between pages that scroll and pages that don't. */
+  scrollbar-gutter: stable;
 }
 
 body {

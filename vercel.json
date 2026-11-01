@@ -5,6 +5,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/minimal-404/", "destination": "/missing-zero/", "permanent": true },
+    { "source": "/experiences/minimal-404/:path*", "destination": "/experiences/missing-zero/:path*", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/experiences/(.*)",
