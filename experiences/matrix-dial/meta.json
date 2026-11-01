@@ -1,0 +1,11 @@
+{
+  "title": "Matrix Dial",
+  "description": "Rows of symbols hide a 404. Turn each row like a safe dial, listening for the tick that says it's in place, to crack the code and find your way home.",
+  "category": "game",
+  "tags": ["puzzle", "safe-cracking", "sound", "canvas"],
+  "interaction": ["mouse", "touch", "keyboard"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-11-01",
+  "sound": true,
+  "thumbnail": "thumbnail.webp"
+}

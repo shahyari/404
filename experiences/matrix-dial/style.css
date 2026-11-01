@@ -1,0 +1,115 @@
+:root {
+  --bg: #040806;
+  --dim: #1e4a2c;
+  --code: #48c774;
+  --code-in-place: #8dffad;
+  --solved: #eafff0;
+  --selected: rgb(141 255 173 / 0.07);
+  --font: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--code-in-place);
+  font-family: var(--font);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: ew-resize;
+  /* Horizontal drags turn rows instead of panning; pinch zoom still works. */
+  touch-action: pinch-zoom;
+}
+
+canvas:focus-visible {
+  outline: 2px solid var(--code-in-place);
+  outline-offset: -2px;
+}
+
+/* Revealed once the code is cracked. Positioned by script.js under the 404. */
+.home {
+  position: fixed;
+  left: 50%;
+  translate: -50% 0;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--solved);
+  background: var(--bg);
+  color: var(--solved);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  animation: appear 0.5s ease both;
+}
+
+.home:hover {
+  background: var(--solved);
+  color: var(--bg);
+}
+
+.home:focus-visible {
+  outline: 2px solid var(--solved);
+  outline-offset: 4px;
+}
+
+.home[hidden] {
+  display: none;
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+}
+
+/* The sound switch is drawn into the grid by script.js. This invisible button
+   sits exactly over those symbols, so it can be clicked, focused and read. */
+.mute {
+  position: fixed;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  font: inherit;
+  font-size: 1px;
+  cursor: pointer;
+}
+
+.mute::before {
+  /* Taller hit area for fingers, without moving the button's position. */
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
+
+.mute:focus-visible {
+  outline: 2px solid var(--code-in-place);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home {
+    animation: none;
+  }
+}
