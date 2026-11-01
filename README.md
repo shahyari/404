@@ -7,7 +7,7 @@ An open-source playground of creative 404 pages. Each one is a small, self-conta
 - **Shuffle** through experiences, or browse and search them all.
 - **Every experience is isolated** in a sandboxed frame, so contributors can use any technique without breaking the site or each other.
 - **Reuse them:** experiences are MIT-licensed unless they say otherwise.
-- **No tracking, no backend, no framework.** Plain HTML, CSS and JavaScript, built with Vite, hosted as static files.
+- **No cookies, no backend, no framework.** Plain HTML, CSS and JavaScript, built with Vite, hosted as static files. Page views are counted with cookieless [Vercel Web Analytics](https://vercel.com/docs/analytics); experiences never get analytics.
 
 ## Add your own
 

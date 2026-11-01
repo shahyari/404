@@ -25,6 +25,14 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_DIR = path.join(ROOT, 'site');
 const PARTIALS_DIR = path.join(SITE_DIR, 'partials');
 const VIRTUAL_ID = 'virtual:experiences';
+
+/**
+ * Vercel Web Analytics (cookieless page view counts). Added to built pages
+ * only: the script is served by Vercel at /_vercel/insights/ and doesn't
+ * exist in dev or preview. Experiences never get it.
+ */
+const ANALYTICS = `<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>`;
 const RESOLVED_VIRTUAL_ID = '\0' + VIRTUAL_ID;
 
 const MIME_TYPES = {
@@ -223,7 +231,7 @@ export default function experiencesPlugin() {
     name: '404-experiences-content',
     transformIndexHtml: {
       order: 'post',
-      handler: (html) => html
+      handler: (html) => (isBuild ? html.replace('</head>', `${ANALYTICS}\n</head>`) : html)
         .replace(/<!--\s*@cards(?:\s+(\d+))?(?:\s+h([1-6]))?\s*-->/g, (_, limit, level) =>
           templates.cards(registry.experiences, { limit: Number(limit) || undefined, headingLevel: Number(level) || 2 }))
         .replace(/<!--\s*@credits\s*-->/g, () => templates.credits(registry.experiences)),
