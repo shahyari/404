@@ -30,7 +30,7 @@ const color = (name) => getComputedStyle(root).getPropertyValue(name).trim();
 const SHADOW_COLORS = ['--magenta', '--cyan', '--yellow', '--magenta', '--cyan', '--green'].map(color);
 
 /** Look-alike characters swapped in when the word is corrupted. */
-const LOOKALIKES = { 4: ['Ч', 'A', '4', '$', 'ﾑ', '£'], 0: ['Ø', 'O', 'Θ', '#', '@', 'D'] };
+const LOOKALIKES = { 4: ['Ч', 'A', '4', '$', 'ﾑ', '£', '٤', '∷', '۴', '𐄊', '⚃'], 0: ['Ø', 'O', 'Θ', '#', '@', 'D', 'ϑ', '⊗', '෦', '🄋', '꧰'] };
 const NOISE = '▓▒░█#%&@$*/\\<>_|';
 
 /** Pointer speed (relative to screen size) where movement starts to glitch, and where it's at full strength. */
@@ -66,6 +66,7 @@ for (let i = 1; i <= SHADOW_LAYERS; i++) {
 const pointer = { x: null, y: null };
 const light = { x: 0, y: 0 };
 const step = { x: 0, y: 0 }; // shadow offset per layer
+const wordShift = { x: 0, y: 0, skew: 0 }; // the word's glitch jolt, copied by its shadows
 let centre = { x: 0, y: 0 };
 
 const defaultLight = () => ({ x: innerWidth * 0.3, y: innerHeight * 0.2 });
@@ -93,7 +94,9 @@ function updateLight(dt) {
 
   shadows.forEach(({ el, jitterX, jitterY }, index) => {
     const n = index + 1;
-    el.style.transform = `translate(${step.x * n + jitterX}px, ${step.y * n + jitterY}px)`;
+    const x = wordShift.x + step.x * n + jitterX;
+    const y = wordShift.y + step.y * n + jitterY;
+    el.style.transform = `translate(${x}px, ${y}px) skewX(${wordShift.skew}deg)`;
   });
 }
 
@@ -122,9 +125,12 @@ function glitchFrame(intensity) {
   }
 
   // The word itself jolts, sometimes skews, and sometimes loses a character.
-  const skew = Math.random() < 0.3 ? random(-8, 8) * intensity : 0;
-  word.style.transform = `translate(${random(-1, 1) * em * 0.03 * intensity}px, ${random(-1, 1) * em * 0.01}px) skewX(${skew}deg)`;
-  word.textContent = Math.random() < 0.15 + 0.35 * intensity ? corruptWord(0.25 + 0.3 * intensity) : TEXT;
+  // Its shadows copy all of it, so they stay the shadow of what's shown.
+  wordShift.x = random(-1, 1) * em * 0.03 * intensity;
+  wordShift.y = random(-1, 1) * em * 0.01;
+  wordShift.skew = Math.random() < 0.3 ? random(-8, 8) * intensity : 0;
+  word.style.transform = `translate(${wordShift.x}px, ${wordShift.y}px) skewX(${wordShift.skew}deg)`;
+  setText(Math.random() < 0.15 + 0.35 * intensity ? corruptWord(0.25 + 0.3 * intensity) : TEXT);
 
   for (const shadow of shadows) {
     shadow.jitterX = Math.random() < 0.4 ? random(-1, 1) * em * 0.06 * intensity : 0;
@@ -135,10 +141,18 @@ function glitchFrame(intensity) {
   repairBurnedPixels();
 }
 
+/** Shows `text` in the word and all its shadow layers. */
+function setText(text) {
+  if (word.textContent === text) return;
+  word.textContent = text;
+  for (const { el } of shadows) el.textContent = text;
+}
+
 function clearGlitch() {
   stage.classList.remove('glitching');
   word.style.transform = '';
-  word.textContent = TEXT;
+  Object.assign(wordShift, { x: 0, y: 0, skew: 0 });
+  setText(TEXT);
   caption.textContent = CAPTION;
   for (const shadow of shadows) shadow.jitterX = shadow.jitterY = 0;
 }
