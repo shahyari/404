@@ -10,6 +10,12 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
+// Safari (and every browser on iOS) can run module scripts before the
+// stylesheet applies. The code below reads colors and sizes from CSS, so wait.
+while (!getComputedStyle(document.documentElement).getPropertyValue('--dust').trim()) {
+  await new Promise(requestAnimationFrame);
+}
+
 const DUST = getComputedStyle(document.documentElement).getPropertyValue('--dust').trim();
 const BG = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
 const MAX_PARTICLES = 2400;

@@ -82,6 +82,16 @@ const code = await (await fetch('worker.js')).text();
 const worker = new Worker(URL.createObjectURL(new Blob([code], { type: 'text/javascript' })));
 ```
 
+**Reading CSS from a script at startup.** Safari, and every browser on iOS, can run your module script before `style.css` has applied. Values read with `getComputedStyle` at that moment are empty or wrong: CSS variables come back as `""`, and sizes are unstyled. If your script reads colors or measures layout as it starts, wait for the stylesheet first:
+
+```js
+while (!getComputedStyle(document.documentElement).getPropertyValue('--my-color').trim()) {
+  await new Promise(requestAnimationFrame);
+}
+```
+
+Use a custom property your stylesheet defines. Setting colors as `element.style.color = 'var(--my-color)'` also avoids the problem, because the browser resolves it once the CSS arrives.
+
 ## The storage bridge
 
 With the `storage` permission, the shell stores data for you in its own `localStorage`. It's namespaced to your experience, so no other experience can read it.

@@ -11,6 +11,12 @@
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const root = document.documentElement;
+
+// Safari (and every browser on iOS) can run module scripts before the
+// stylesheet applies. The code below reads colors and sizes from CSS, so wait.
+while (!getComputedStyle(root).getPropertyValue('--fg').trim()) {
+  await new Promise(requestAnimationFrame);
+}
 const stage = document.querySelector('.stage');
 const word = stage.querySelector('.word');
 const slices = [...stage.querySelectorAll('.slice')];
@@ -30,8 +36,8 @@ const NOISE = '▓▒░█#%&@$*/\\<>_|';
 /** Pointer speed (relative to screen size) where movement starts to glitch, and where it's at full strength. */
 const SPEED_START = 1.5;
 const SPEED_FULL = 5;
-/** Glitch frames are stepped, not smooth: a new random frame every 100–300 ms. */
-const TICK_MS = [300, 500];
+/** Glitch frames are stepped, not smooth: a new random frame every 800–1300 ms. */
+const TICK_MS = [800, 1300];
 /** Automatic bursts: how long they last and how far apart they are. */
 const BURST_MS = [120, 420];
 const BURST_GAP_MS = [1500, 5000];
@@ -75,12 +81,13 @@ function updateLight(dt) {
   light.x += (target.x - light.x) * ease;
   light.y += (target.y - light.y) * ease;
 
-  // Shadows point away from the light. A closer light casts longer shadows.
+  // Shadows point away from the light. They tuck in close as the light nears
+  // the word and fan out as it moves away, up to a maximum length.
   const dx = centre.x - light.x;
   const dy = centre.y - light.y;
   const distance = Math.max(1, Math.hypot(dx, dy));
   const scale = Math.min(innerWidth, innerHeight) / 800;
-  const length = clamp((24000 * scale * scale) / (distance + 80 * scale), 10 * scale, 75 * scale);
+  const length = clamp(distance * 0.12, 3 * scale, 75 * scale);
   step.x = (dx / distance) * (length / SHADOW_LAYERS);
   step.y = (dy / distance) * (length / SHADOW_LAYERS);
 
