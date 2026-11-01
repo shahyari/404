@@ -1,6 +1,6 @@
 {
   "title": "Gathering Dust",
-  "description": "Thousands of dust particles settle into a 404, until a gust blows them away again. Move your pointer to stir them up.",
+  "description": "Thousands of dust particles settle into a 404. Move your pointer through them to stir them, or shake it to blow them apart.",
   "category": "animated",
   "tags": ["canvas", "particles", "generative"],
   "interaction": ["passive", "mouse", "touch"],
