@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Closing Credits</title>
+  <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/oswald.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main>
+    <!-- Scene 1: the title card. -->
+    <section class="scene scene-title" data-scene="title">
+      <h1 class="title"><span class="title-shadow" aria-hidden="true">404</span><span class="title-face" aria-hidden="true">404</span><span class="visually-hidden">404: Page not found</span></h1>
+    </section>
+
+    <!-- Scene 2: the director's card. -->
+    <section class="scene scene-director" data-scene="director">
+      <p class="director">
+        <span class="director-role">written and directed by</span>
+        <span class="director-name">Hossein Shahyari</span>
+      </p>
+    </section>
+
+    <!-- Scene 3: the roll. script.js moves it from the bottom of the screen to the top. -->
+    <section class="scene scene-roll" data-scene="roll" aria-label="Closing credits">
+      <div class="roll" data-roll>
+        <div class="block">
+          <h2>Cast</h2>
+          <p class="note">in order of disappearance</p>
+          <dl>
+            <dt>The Page</dt><dd>Itself (missing)</dd>
+            <dt>The Link</dt><dd>Broken</dd>
+            <dt>The Visitor</dt><dd>You</dd>
+            <dt>The Back Button</dt><dd>Very Patient</dd>
+            <dt>The Search Bar</dt><dd>Unused</dd>
+            <dt>The Homepage</dt><dd>As Itself</dd>
+            <dt>Old Bookmark</dt><dd>Out of Date</dd>
+            <dt>Typo in the URL</dt><dd>Uncredited</dd>
+          </dl>
+        </div>
+
+        <div class="block">
+          <h2>Crew</h2>
+          <dl>
+            <dt>Produced by</dt><dd>The Internet</dd>
+            <dt>Executive Producer</dt><dd>DNS</dd>
+            <dt>Line Producer</dt><dd>A Server Somewhere</dd>
+            <dt>Director of Photography</dt><dd>Lorem Ipsum</dd>
+            <dt>Script Supervisor</dt><dd>JavaScript</dd>
+            <dt>Continuity</dt><dd>The Cache</dd>
+            <dt>Gaffer</dt><dd>Dark Mode</dd>
+            <dt>Best Boy</dt><dd>HTTP 200</dd>
+            <dt>Key Grip</dt><dd>Ctrl + F5</dd>
+            <dt>Location Scout</dt><dd>Still Looking</dd>
+            <dt>Casting</dt><dd>querySelector()</dd>
+            <dt>Wardrobe</dt><dd>CSS</dd>
+            <dt>Hair &amp; Makeup</dt><dd>Box Shadow</dd>
+            <dt>Special Effects</dt><dd>requestAnimationFrame</dd>
+            <dt>Stunt Coordinator</dt><dd>302 Redirect</dd>
+            <dt>Stunt Double for The Page</dt><dd>410 Gone</dd>
+            <dt>Original Score</dt><dd>A Few Oscillators</dd>
+            <dt>Transportation</dt><dd>TCP/IP</dd>
+            <dt>Catering</dt><dd>Cookies (declined)</dd>
+            <dt>Legal</dt><dd>robots.txt</dd>
+            <dt>Lost &amp; Found</dt><dd>Empty</dd>
+          </dl>
+        </div>
+
+        <div class="block">
+          <h2>Music</h2>
+          <dl class="songs">
+            <dt>“Not Found in A Minor”</dt><dd>composed by Claude, performed by A Few Oscillators</dd>
+            <dt>“Page Not Found”</dt><dd>performed by The Status Codes</dd>
+            <dt>“Ping Me Maybe”</dt><dd>performed by The Packets</dd>
+            <dt>“Nowhere to Be Found (Timeout Mix)”</dt><dd>performed by DJ 504</dd>
+            <dt>“Lost in Transit”</dt><dd>performed by Packet Loss</dd>
+          </dl>
+        </div>
+
+        <div class="block">
+          <h2>Special Thanks</h2>
+          <ul>
+            <li>Every typo in every URL</li>
+            <li>Whoever moved the page</li>
+            <li>Whoever didn't set up the redirect</li>
+            <li>You, for staying until the end</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <p class="note">Filmed on location nowhere on this server.</p>
+        </div>
+
+        <div class="block">
+          <p class="fine">
+            No pages were harmed in the making of this 404.<br>
+            Any resemblance to pages, living or deleted, is purely coincidental.
+          </p>
+        </div>
+
+        <div class="finale" data-finale>
+          <p class="finale-mark" aria-hidden="true"><span class="title-shadow">404</span><span class="title-face">404</span></p>
+          <p class="finale-end">The End</p>
+          <nav class="finale-links">
+            <a href="/" target="_top">Return home</a>
+            <button type="button" data-replay>Watch again</button>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="controls">
+    <p class="hint" data-hint>Hold to fast-forward</p>
+    <button type="button" class="sound" aria-pressed="false" data-sound>Sound</button>
+  </footer>
+</body>
+</html>

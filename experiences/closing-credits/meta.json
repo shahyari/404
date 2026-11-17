@@ -1,0 +1,11 @@
+{
+  "title": "Closing Credits",
+  "description": "The page you wanted has left the theater. A title card, the director's name, then the credits roll, with a synthesized score, for everyone involved in losing it.",
+  "category": "animated",
+  "tags": ["film", "credits", "typography", "web-audio"],
+  "interaction": ["passive", "mouse", "touch", "keyboard"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-11-17",
+  "thumbnail": "thumbnail.webp",
+  "sound": true
+}
