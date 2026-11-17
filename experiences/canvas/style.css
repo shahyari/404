@@ -1,0 +1,333 @@
+:root {
+  --desk: #1d1a18;
+  --panel: #2a2623;
+  --panel-raised: #37322e;
+  --line: #4a433d;
+  --text: #f3ede4;
+  --muted: #b5aa9c;
+  --paper: #f7f2e8;
+  --accent: #ffcf5a;
+  --track: 6px;
+  --thumb: 18px;
+  --font: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Keep `hidden` working on elements that set their own display. */
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--desk);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100%;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 16px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.code {
+  margin-right: 0.4em;
+  font-weight: 800;
+  color: var(--text);
+}
+
+a {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  text-underline-offset: 0.25em;
+}
+
+/* The paper --------------------------------------------------------------- */
+
+.desk {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 0.9rem 16px;
+}
+
+.board {
+  position: relative;
+  /* Sized by script.js to fit the desk at the drawing's aspect ratio. */
+  width: 0;
+  height: 0;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 3px;
+  /* The texture is drawn by paper.js; this shows until it is. */
+  background-color: var(--paper);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.4),
+    0 12px 32px rgb(0 0 0 / 0.45);
+  /* Drawing with a finger shouldn't scroll or zoom the page. */
+  touch-action: none;
+  cursor: none;
+}
+
+.board canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Paint soaks into the paper, so its texture shows through, and pencil lines
+   darken the paint under them, like graphite over marker. */
+[data-layer='paint'],
+[data-layer='sketch'] {
+  mix-blend-mode: multiply;
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  place-items: center;
+  border: 1.5px solid rgb(30 26 24 / 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.7);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.cursor.visible {
+  display: grid;
+}
+
+/* With a sticker, the cursor is a preview of it. */
+.cursor.sticker {
+  border: 0;
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+/* Toolbar ----------------------------------------------------------------- */
+
+.toolbar {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem 16px max(0.9rem, env(safe-area-inset-bottom));
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+button {
+  min-height: 2.25rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-raised);
+  color: var(--text);
+  font: 500 0.875rem / 1 var(--font);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+button[aria-pressed='true'] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--desk);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #241c05;
+  font-weight: 650;
+}
+
+button:focus-visible,
+.hue:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.size {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Both sliders share one look: a thin track and a round thumb. */
+.size input {
+  width: 7rem;
+  height: var(--thumb);
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.size input::-webkit-slider-runnable-track {
+  height: var(--track);
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--accent) var(--fill, 0%), var(--line) var(--fill, 0%));
+}
+
+.size input::-moz-range-track {
+  height: var(--track);
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--accent) var(--fill, 0%), var(--line) var(--fill, 0%));
+}
+
+.size input::-webkit-slider-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc((var(--track) - var(--thumb)) / 2);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.size input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--thumb);
+  height: var(--thumb);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+}
+
+/* The hue spectrum: drag along it to pick a color. The element is tall enough
+   to grab; the visible spectrum is a thin track through its middle. */
+.hue {
+  position: relative;
+  flex: 1 1 14rem;
+  max-width: 28rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.hue::before {
+  content: '';
+  position: absolute;
+  inset: calc(50% - var(--track) / 2) 0 auto;
+  height: var(--track);
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    hsl(0 85% 58%), hsl(30 85% 58%), hsl(60 85% 58%), hsl(90 85% 58%),
+    hsl(120 85% 58%), hsl(150 85% 58%), hsl(180 85% 58%), hsl(210 85% 58%),
+    hsl(240 85% 58%), hsl(270 85% 58%), hsl(300 85% 58%), hsl(330 85% 58%),
+    hsl(359 85% 58%)
+  );
+}
+
+.hue-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--thumb);
+  height: var(--thumb);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hue.inactive {
+  opacity: 0.35;
+}
+
+/* Pattern swatches are small canvases drawn by script.js. */
+.options button {
+  padding: 0;
+  width: 2.25rem;
+  overflow: hidden;
+}
+
+.options canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.stickers button {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 40rem) {
+  .actions {
+    margin-left: 0;
+  }
+
+  .size input {
+    width: 5.5rem;
+  }
+
+  .hue {
+    flex-basis: 100%;
+    max-width: none;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Canvas",
+  "description": "The page is missing, so here's a pencil sketch of a 404 instead. Paint over it with colors, patterns and stickers, then download your masterpiece.",
+  "category": "interactive",
+  "tags": ["drawing", "coloring", "canvas", "stickers", "download"],
+  "interaction": ["mouse", "touch", "keyboard"],
+  "author": { "name": "Hossein Shahyari", "url": "https://shahyari.com" },
+  "date": "2026-11-17",
+  "thumbnail": "thumbnail.webp",
+  "permissions": ["downloads"]
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Canvas</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <main>
+    <header class="top">
+      <h1><span class="code">404</span> This page is missing. Color it in.</h1>
+      <a href="/" target="_top">Return home</a>
+    </header>
+
+    <div class="desk" data-desk>
+      <div class="board" data-board>
+        <canvas data-layer="paper" aria-hidden="true"></canvas>
+        <canvas data-layer="paint" aria-hidden="true"></canvas>
+        <canvas data-layer="sketch" role="img" aria-label="A pencil sketch of the number 404, ready to color"></canvas>
+        <canvas data-layer="stickers" aria-hidden="true"></canvas>
+        <div class="cursor" data-cursor aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <section class="toolbar" aria-label="Painting tools">
+      <div class="row">
+        <div class="group tools" role="group" aria-label="Tool">
+          <button type="button" data-tool="brush" aria-pressed="true">Brush</button>
+          <button type="button" data-tool="pattern" aria-pressed="false">Pattern</button>
+          <button type="button" data-tool="sticker" aria-pressed="false">Sticker</button>
+          <button type="button" data-tool="eraser" aria-pressed="false">Eraser</button>
+        </div>
+
+        <label class="size">
+          <span>Size</span>
+          <input type="range" min="4" max="80" value="24" data-size>
+        </label>
+
+        <div class="group actions">
+          <button type="button" data-undo disabled>Undo</button>
+          <button type="button" data-clear disabled>Clear</button>
+          <button type="button" class="primary" data-save>Download</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="hue" role="slider" tabindex="0" aria-label="Color" aria-valuemin="0" aria-valuemax="359" aria-valuenow="200" data-hue>
+          <span class="hue-thumb" data-hue-thumb></span>
+        </div>
+
+        <div class="group options" role="group" aria-label="Pattern" data-options="pattern" hidden></div>
+        <div class="group options stickers" role="group" aria-label="Sticker" data-options="sticker" hidden></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
